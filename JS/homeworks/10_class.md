@@ -6,8 +6,9 @@ Password
 
 ```javascript
 class Password {
-    constructor(parent, open) {}
-    .....
+    constructor(parent, open) {
+        .....
+    }
 }
 
 let p = new Password(document.body, true)
@@ -46,7 +47,7 @@ LoginForm
 
 ## LoginForm Constructor
 
-оформите предыдущую задачу как функцию-конструктор. Продумайте и предусмотрите 
+оформите предыдущую задачу как класс. Продумайте и предусмотрите 
 геттеры, сеттеры и колбэки.
 
 ## Password Verify
@@ -63,36 +64,38 @@ Form
 ---
 
 ```javascript
-function Form(el, data, okCallback, cancelCallback){
-    let formBody = document.createElement('div')
-    let okButton = document.createElement('button')
-    okButton.innerHTML = 'OK'
-
-    let cancelButton = document.createElement('button')
-    cancelButton.innerHTML = 'Cancel'
-
-    formBody.innerHTML = '<h1>тут будет форма после перервы</h1>'
-    if (typeof okCallback === 'function'){
-        formBody.appendChild(okButton);
-        okButton.onclick = (e) => {
-            console.log(this)
-            this.okCallback(e)
+class Form {
+    constructor(el, data, okCallback, cancelCallback) {
+        let formBody = document.createElement('div')
+        let okButton = document.createElement('button')
+        okButton.innerHTML = 'OK'
+    
+        let cancelButton = document.createElement('button')
+        cancelButton.innerHTML = 'Cancel'
+    
+        formBody.innerHTML = '<h1>тут будет форма после перервы</h1>'
+        if (typeof okCallback === 'function'){
+            formBody.appendChild(okButton);
+            okButton.onclick = (e) => {
+                console.log(this)
+                this.okCallback(e)
+            }
         }
+    
+        if (typeof cancelCallback === 'function'){
+            formBody.appendChild(cancelButton);
+            cancelButton.onclick = cancelCallback
+        }
+    
+        el.appendChild(formBody)
+    
+    
+        this.okCallback     = okCallback
+        this.cancelCallback = cancelCallback
+    
+        this.data           = data
+        this.validators     = {}
     }
-
-    if (typeof cancelCallback === 'function'){
-        formBody.appendChild(cancelButton);
-        cancelButton.onclick = cancelCallback
-    }
-
-    el.appendChild(formBody)
-
-
-    this.okCallback     = okCallback
-    this.cancelCallback = cancelCallback
-
-    this.data           = data
-    this.validators     = {}
 }
 
 
