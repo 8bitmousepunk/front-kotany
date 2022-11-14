@@ -3,7 +3,7 @@ Main goal is getting more familiar with angular basic concepts, built-in directi
 
 Todo list is a application where you can simply add and remove any todo item. Every todo item is a simple string which describe a task what need to be done
 
-![Todo list mockup](https://github.com/sir13tommy/front-kotany/blob/main/assets/todo_mockup.png!raw=true)
+![Todo list mockup](https://github.com/sir13tommy/front-kotany/blob/main/assets/todo_mockup.png?raw=true)
 
 Requirements:
  * Every item need to contain two buttons, edit and remove (pencil and minus on mockup)
